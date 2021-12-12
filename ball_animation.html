@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <title>
+        animation by css
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(to right, lightblue, whitesmoke, lightblue)
+        }
+
+        #ball1,
+        #ball2,
+        #ball3,
+        #ball4 {
+
+            height: 30px;
+            width: 30px;
+            background-color: black;
+            border-radius: 50%;
+            display: inline-flex;
+            animation: PopUp 0.9s ease-in infinite;
+        }
+
+        #ball1 {
+            background-color: crimson;
+
+        }
+
+        #ball2 {
+            background-color: orange;
+            animation-delay: 0.15s;
+        }
+
+        #ball3 {
+            background-color: yellow;
+            animation-delay: 0.25s;
+        }
+
+        #ball4 {
+            background-color: #1753b4;
+            animation-delay: 0.50s;
+        }
+
+        #line {
+            width: 300px;
+            height: 2px;
+            background-color: black;
+            margin: auto;
+        }
+
+        #container {
+            text-align: center;
+            margin-top: 25%;
+        }
+
+        @keyframes PopUp {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="ball1"></div>
+        <div id="ball2"></div>
+        <div id="ball3"></div>
+        <div id="ball4"></div>
+    </div>
+    <div id="line"></div>
+
+
+</body>
+
+</html>
