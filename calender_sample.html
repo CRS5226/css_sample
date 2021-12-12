@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calender</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #111;
+        }
+        .calender{
+            position: relative;
+            width: 200px;
+            background: #fff;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            -webkit-box-reflect: below 5px linear-gradient(transparent,transparent,#0004);
+        }
+        .calender #monthname{
+            position: relative;
+            padding: 5px 10px;
+            background: #ff6331;
+            color: #fff;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .calender #dayname{
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 300;
+            color: #999;
+        }
+        .calender #daynumber{
+            margin-top: 50px;
+            line-height: 1px;
+            font-size: 80px;
+            font-weight: 700;
+            color: #333;
+        }
+        .calender #year{
+            margin-top: 50px;
+            font-size: 20px;
+            font-weight: 300;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="calender">
+        <p id="monthname"></p>
+        <p id="dayname"></p>
+        <p id="daynumber"></p>
+        <p id="year"></p>
+    </div>
+    <script>
+    const lang = navigator.language;
+        let date = new Date();
+        
+        let daynumber = date.getDate();
+        let month = date.getMonth();
+        let dayname = date.toLocaleDateString(lang, {weekday: "long"})
+        let monthname = date.toLocaleDateString(lang, {month: "long"})
+        let year = date.getFullYear();
+        
+        document.getElementById("monthname").innerHTML = monthname;
+        document.getElementById("dayname").innerHTML = dayname;
+        document.getElementById("daynumber").innerHTML = daynumber;
+        document.getElementById("year").innerHTML = year;
+    </script>
+</body>
+</html>
