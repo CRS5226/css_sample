@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>gooey effect</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #000;
+        overflow: hidden;
+      }
+      .container {
+        position: relative;
+        width: 800px;
+        display: flex;
+        justify-content: space-between;
+        filter: url(#gooey);
+      }
+      .container .circle {
+        position: relative;
+        min-width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .container .circle:before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        right: -50px;
+        bottom: -50px;
+        border-radius: 50%;
+        background: #fff;
+        filter: blur(50px);
+      }
+      .container .circle.circle1,
+      .container .circle.circle1:before {
+        background: linear-gradient(90deg, #f00, #0ff);
+      }
+      .container .circle.circle2,
+      .container .circle.circle2:before {
+        background: linear-gradient(90deg, #ffeb3b, #da00ff);
+      }
+      .container .circle.circle1 {
+        animation: animate1 5s linear infinite;
+      }
+      @keyframes animate1 {
+        0% {
+          transform: translateX(0) rotate(0deg);
+        }
+        30% {
+          transform: translateX(250px) rotate(240deg);
+        }
+        60% {
+          transform: translateX(250px) rotate(480deg);
+        }
+        100% {
+          transform: translateX(0) rotate(720deg);
+        }
+      }
+
+      .container .circle.circle2 {
+        animation: animate2 5s linear infinite;
+      }
+      @keyframes animate2 {
+        0% {
+          transform: translateX(0) rotate(0deg);
+        }
+        30% {
+          transform: translateX(-250px) rotate(-240deg);
+        }
+        60% {
+          transform: translateX(-250px) rotate(-480deg);
+        }
+        100% {
+          transform: translateX(0) rotate(-720deg);
+        }
+      }
+
+      svg {
+        height: 0;
+        width: 0;
+      }
+      h1 {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 4em;
+        z-index: 10000;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>make something satisfying</h1>
+    <div class="container">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+    </div>
+    <svg>
+      <filter id="gooey">
+        <feGuassianBlur in="SourceGraphic" stdDeviation="10" />
+        <feColorMatrix
+          values="
+            1 0 0 0 0
+            0 1 0 0 0
+            0 0 1 0 0
+            0 0 0 20 -10
+            "
+        />
+      </filter>
+    </svg>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(function () {
+        $(".container .circle").draggable();
+      });
+    </script>
+  </body>
+</html>
